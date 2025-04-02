@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-interface Users {
+export interface User {
     _id: string;
     name: string;
     photo: string;
@@ -22,7 +22,7 @@ interface Users {
     updatedAt: string;
 }
 
-const initialState: Users[] | null = []
+const initialState: User[] | null = []
 
 const usersSlice = createSlice({
     name: "users",
