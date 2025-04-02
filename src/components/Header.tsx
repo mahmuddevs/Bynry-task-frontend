@@ -1,7 +1,9 @@
+import { NavLink } from "react-router"
+
 const Header = () => {
     const navItems = (
         <>
-            <li><a>Dashboard</a></li>
+            <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
         </>
     )
     return (
