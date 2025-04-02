@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@plugin "daisyui";
+
+.global-margin {
+    @apply w-full px-4 sm:container md:px-6 lg:px-8 xl:w-8/12 mx-auto;
+}
