@@ -8,11 +8,16 @@ const Home = () => {
 
     return (
         <div className="global-margin my-24">
-            {
-                users.map((user) => (
-                    <UserCard key={user._id} {...user} />
-                ))
-            }
+            <div>
+                <h1 className="text-3xl font-semibold">All Users</h1>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 my-8">
+                {
+                    users.map((user) => (
+                        <UserCard key={user._id} {...user} />
+                    ))
+                }
+            </div>
         </div>
     )
 }

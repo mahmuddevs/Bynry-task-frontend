@@ -5,11 +5,14 @@ import { Provider } from 'react-redux'
 import { store } from './app/store.ts'
 import { RouterProvider } from 'react-router'
 import router from './routes/router'
+import UserStateProvider from './components/UserStateProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <UserStateProvider>
+        <RouterProvider router={router} />
+      </UserStateProvider>
     </Provider>
   </StrictMode>,
 )

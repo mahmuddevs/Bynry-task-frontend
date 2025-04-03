@@ -1,8 +1,10 @@
 import axios from "axios";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
+import { addUser } from "../app/slices/usersSlice/usersSlice";
 
-interface UserFormValues {
+export interface UserFormValues {
     name: string;
     photo: FileList;
     description: string;
@@ -21,6 +23,8 @@ const AddUserForm = () => {
         formState: { errors, isSubmitting }
     } = useForm<UserFormValues>();
 
+    const dispatch = useDispatch()
+
     const onSubmit: SubmitHandler<UserFormValues> = async (data) => {
         const { name, photo, description, email, address, phone, linkedin, twitter } = data
 
@@ -33,10 +37,8 @@ const AddUserForm = () => {
         }
 
         const payload = {
-            name, photo: data.photo[0], description, email, address, contact
+            name, photo: photo[0], description, email, address, contact
         }
-
-        console.log(payload)
 
         axios.post(`${import.meta.env.VITE_SERVER_URL}/users/create`, payload, {
             headers: {
@@ -45,7 +47,7 @@ const AddUserForm = () => {
         })
             .then((res) => {
                 const { message } = res.data
-                if (res.data.sucess) {
+                if (res.data?.success) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
@@ -53,17 +55,20 @@ const AddUserForm = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    // reset();
-                } else {
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "warning",
-                        title: `Something Went Wrong`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+                    dispatch(addUser(res.data.user))
+                    reset();
                 }
-            }).catch((err) => { console.log(err.message) })
+            }).catch((err) => {
+                console.log(err.message)
+                Swal.fire({
+                    position: "top-end",
+                    icon: "warning",
+                    title: `Something Went Wrong`,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+            })
     };
 
     return (
@@ -104,7 +109,7 @@ const AddUserForm = () => {
             </div>
 
             <div>
-                <label className="label"><span className="label-text">Address (Example: 221B Baker Street, London, UK)</span></label>
+                <label className="label"><span className="label-text">Address</span></label>
                 <input type="text" className="input input-bordered w-full"
                     placeholder="221B Baker Street, London, UK"
                     {...register("address", { required: "Address is required" })}

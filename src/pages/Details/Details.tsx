@@ -31,7 +31,7 @@ const Details = () => {
                     <div className="mx-auto bg-white shadow-lg rounded-lg p-8 mb-4">
                         <div className="flex items-center space-x-8">
                             <img
-                                src={import.meta.env.VITE_SERVER_URL + user.photo}
+                                src={import.meta.env.VITE_SERVER_URL + `/${user.photo}`}
                                 alt={user.name}
                                 className="w-32 h-32 rounded-full border-4 border-gray-300 object-cover"
                             />

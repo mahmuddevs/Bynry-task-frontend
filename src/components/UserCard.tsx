@@ -14,7 +14,7 @@ interface User {
 
 const UserCard = ({ _id, name, photo, email, description, location }: User) => {
     return (
-        <Link to={`/users/${_id}`} className="bg-white shadow-md rounded-lg p-4 w-72 flex flex-col items-center text-center">
+        <Link to={`/users/${_id}`} className="bg-white shadow-md rounded-lg p-4 flex flex-col items-center text-center hover:shadow-xl hover:scale-105 transition-transform duration-300">
             <img
                 src={import.meta.env.VITE_SERVER_URL + `/${photo}`}
                 alt={name}
