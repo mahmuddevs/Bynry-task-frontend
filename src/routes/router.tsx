@@ -5,10 +5,12 @@ import Details from "../pages/Details/Details";
 import Dashboard from "../layouts/Dashboard";
 import Users from "../pages/Dashboard/Users/Users";
 import AddUsers from "../pages/Dashboard/Add-Users/AddUsers";
+import Error from "../pages/Error/Error";
 const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
+        errorElement: <Error />,
         children: [
             {
                 index: true,
@@ -23,6 +25,7 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <Dashboard />,
+        errorElement: <Error />,
         children: [
             {
                 index: true,
