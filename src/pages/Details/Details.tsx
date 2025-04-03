@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { User } from "../../app/slices/usersSlice/usersSlice"
-import { FaLinkedin, FaTwitter, FaPhone, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
+import { FaLinkedin, FaTwitter, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import Spinner from "../../components/Spinner";
 import MapComponent from "../../components/MapComponent";
 

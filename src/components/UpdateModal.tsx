@@ -77,6 +77,7 @@ const UpdateModal = forwardRef<HTMLDialogElement, ModalProps>(({ closeModal }, r
                 });
                 dispatch(updateUser(res.data.user));
                 reset();
+                setSelectedImage(null)
                 closeModal();
             }
         } catch (err: any) {
